@@ -1,0 +1,15 @@
+
+install Docker for your platform
+
+docker run -i -t -p8888:8888 xxx
+
+docker run -i -t --mount type=bind,source="/$(pwd)"/../pplectures2022,target=/pplectures2022 -p8888:8888 ppenv
+
+in container
+
+# RB remove allow root later
+jupyter lab --ip 0.0.0.0 --allow-root
+
+
+
+
