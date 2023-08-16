@@ -69,4 +69,10 @@ RUN conda install -c conda-forge openjdk && \
 # Would prefer to install with conda, but doesn't work now
 RUN pip install pyspark ray
 
+RUN conda install torchvision   
+
+RUN useradd -ms /bin/bash jupyteruser
+USER jupyteruser
+WORKDIR /home/jupyteruser
+
 CMD [ "/bin/bash" ]

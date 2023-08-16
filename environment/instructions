@@ -1,14 +1,36 @@
 
-install Docker for your platform
 
-docker run -i -t -p8888:8888 xxx
+#### Prepare your system.
 
-docker run -i -t --mount type=bind,source="/$(pwd)"/../pplectures2022,target=/pplectures2022 -p8888:8888 ppenv
+Install docker.  Follow platform specific instructions
 
-in container
+#### Build container
+
+docker build . -t pp.ebook
+
+
+### Run container
+
+docker run -i -t --mount type=bind,source="/$(pwd)"/../ebook,target=/ebook -p8888:8888 ppenv
+
+#docker run -i -t --mount type=bind,source="/$(pwd)"/../pplectures2022,target=/pplectures2022 -p8888:8888 ppenv
+
+### Run jupyter in container
+
 
 # RB remove allow root later
 jupyter lab --ip 0.0.0.0 --allow-root
+
+#### Notes for randal
+
+# add to dockerfile
+conda install -c conda-forge xeus-cling
+
+# for ubuntu?
+conda install -c conda-forge openmp
+
+# for mac
+conda install -c conda-forge llvm-openmp
 
 
 
