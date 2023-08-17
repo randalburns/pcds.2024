@@ -6,12 +6,12 @@ Install docker.  Follow platform specific instructions
 
 #### Build container
 
-docker build . -t pp.ebook
+docker build . -t pcds.ebook
 
 
 ### Run container
 
-docker run -i -t --mount type=bind,source="/$(pwd)"/../ebook,target=/ebook -p8888:8888 ppenv
+docker run -i -t --mount type=bind,source="/$(pwd)"/../ebook,target=/ebook -p8888:8888 pcds.ebook
 
 #docker run -i -t --mount type=bind,source="/$(pwd)"/../pplectures2022,target=/pplectures2022 -p8888:8888 ppenv
 
