@@ -34,4 +34,21 @@ conda install -c conda-forge llvm-openmp
 
 
 
+#### FROM README.md
+
+#### Notes for randal
+
+# add to dockerfile
+conda install -c conda-forge xeus-cling
+
+# for ubuntu?
+conda install -c conda-forge openmp
+
+# for mac
+conda install -c conda-forge llvm-openmp
+
+# RB remove allow root later
+jupyter lab --ip 0.0.0.0 --allow-root
+#docker run -i -t --mount type=bind,source="/$(pwd)"/../pplectures2022,target=/pplectures2022 -p8888:8888 ppenv
+
 
