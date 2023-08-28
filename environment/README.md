@@ -17,8 +17,8 @@ docker run -i -t --mount type=bind,source="/$(pwd)"/../ebook,target=/home/jupyte
 
 ### Run jupyter in container
 
-jupyter lab --ip 0.0.0.0 --allow-root
+cd ebook
+jupyter lab --ip 0.0.0.0 
 
 
-_TODO_ bad style to run jupyter as root. RB to fix.
 
