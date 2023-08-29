@@ -12,6 +12,8 @@ docker build . -t pp.ebook
 
 #### Run container
 
+This only runs out of the `environment` subdirectory in which you built the container.
+
 docker run -i -t --mount type=bind,source="/$(pwd)"/../ebook,target=/home/jupyteruser/ebook -p8888:8888 pp.ebook
 
 
