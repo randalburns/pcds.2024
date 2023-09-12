@@ -70,6 +70,7 @@ RUN conda install -c conda-forge openjdk && \
 RUN pip install pyspark ray
 
 RUN conda install torchvision   
+RUN conda install pandoc   
 
 RUN useradd -ms /bin/bash jupyteruser
 USER jupyteruser
