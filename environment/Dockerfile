@@ -72,6 +72,8 @@ RUN pip install pyspark ray
 RUN conda install torchvision   
 RUN conda install pandoc   
 
+RUN conda install jax -c conda-forge
+
 RUN useradd -ms /bin/bash jupyteruser
 USER jupyteruser
 WORKDIR /home/jupyteruser
