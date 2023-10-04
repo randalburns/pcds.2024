@@ -117,6 +117,7 @@ void stencil_average_omp ( double* input_ar, double* output_ar )
                 }   
             }   
             output_ar[DIM*x+y] = partial/((2*HWIDTH+1)*(2*HWIDTH+1));
+            partial=0.0;
         }       
     }
 }
@@ -136,7 +137,7 @@ void stencil_average_omp_inner ( double* input_ar, double* output_ar )
             }   
             output_ar[DIM*x+y] = partial/((2*HWIDTH+1)*(2*HWIDTH+1));
             partial=0.0;
-        j       
+        }       
     }
 }
 
