@@ -74,8 +74,6 @@ RUN conda install pandoc
 
 RUN conda install jax -c conda-forge
 
-RUN conda install r-essentials -c conda-forge
-
 RUN useradd -ms /bin/bash jupyteruser
 USER jupyteruser
 WORKDIR /home/jupyteruser
