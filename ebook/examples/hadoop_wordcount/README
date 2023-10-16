@@ -1,0 +1,20 @@
+
+
+In the 2023 version of this class, you need to:
+
+```
+export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
+```
+
+
+To build and run wordcount:
+
+~/ebook/tools/hadoop-3.2.4/bin/hadoop com.sun.tools.javac.Main WordCount.java
+jar cf wc.jar WordCount*.class
+~/ebook/tools/hadoop-3.2.4/bin/hadoop jar wc.jar WordCount ../../data/textbible /tmp/output
+
+To build and run wordcount streaming:
+
+TODO ~/hadoop-3.3.1/bin/mapred streaming -input ../../data/textbible -output /tmp/output4 -mapper mapper.py -reducer reducer.py
+
+

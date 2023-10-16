@@ -74,6 +74,12 @@ RUN conda install pandoc
 
 RUN conda install jax -c conda-forge
 
+RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.2.4/hadoop-3.2.4.tar.gz && \
+        tar -xvzf hadoop-3.2.4.tar.gz && rm -f hadoop-3.2.4.tar.gz
+
+ENV JAVA_HOME=/opt/conda/bin
+ENV HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
+    
 RUN useradd -ms /bin/bash jupyteruser
 USER jupyteruser
 WORKDIR /home/jupyteruser
