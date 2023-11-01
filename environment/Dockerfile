@@ -79,7 +79,10 @@ RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.2.4/hadoop-3.2.4.tar.gz
 
 ENV JAVA_HOME=/opt/conda/bin
 ENV HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
-    
+
+RUN apt-get -y install graphviz
+RUN conda install python-graphviz
+
 RUN useradd -ms /bin/bash jupyteruser
 USER jupyteruser
 WORKDIR /home/jupyteruser
