@@ -1,6 +1,6 @@
 FROM ubuntu:lunar
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
-ENV PATH /opt/conda/bin:$PATH
+ENV PATH=/opt/conda/bin:$PATH
 
 # hadolint ignore=DL3008
 RUN set -x && \
@@ -77,7 +77,7 @@ RUN conda install jax -c conda-forge
 RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.2.4/hadoop-3.2.4.tar.gz && \
         tar -xvzf hadoop-3.2.4.tar.gz && rm -f hadoop-3.2.4.tar.gz
 
-ENV JAVA_HOME=/opt/conda/bin
+ENV JAVA_HOME=/opt/conda
 ENV HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 
 RUN apt-get -y install graphviz
