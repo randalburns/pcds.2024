@@ -86,5 +86,6 @@ RUN conda install python-graphviz
 RUN useradd -ms /bin/bash jupyteruser
 USER jupyteruser
 WORKDIR /home/jupyteruser
+ENV SHELL=/bin/bash
 
 CMD [ "/bin/bash" ]
