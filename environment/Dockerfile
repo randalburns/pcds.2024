@@ -83,6 +83,8 @@ ENV HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 RUN apt-get -y install graphviz
 RUN conda install python-graphviz
 
+RUN pip install -U ipywidgets
+
 RUN useradd -ms /bin/bash jupyteruser
 USER jupyteruser
 WORKDIR /home/jupyteruser
