@@ -85,6 +85,9 @@ RUN conda install python-graphviz
 
 RUN pip install -U ipywidgets
 
+RUN apt-get update && apt-get install -y \
+    openmpi-bin openmpi-common libopenmpi-dev
+
 RUN useradd -ms /bin/bash jupyteruser
 USER jupyteruser
 WORKDIR /home/jupyteruser
