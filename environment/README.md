@@ -20,6 +20,7 @@ docker run -i -t --mount type=bind,source="/$(pwd)"/../ebook,target=/home/jupyte
 ### Run jupyter in container
 
 cd ebook
+
 jupyter lab --ip 0.0.0.0 
 
 
