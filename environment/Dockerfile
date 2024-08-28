@@ -1,6 +1,16 @@
-FROM ubuntu:lunar
+FROM ubuntu:noble
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH=/opt/conda/bin:$PATH
+
+# renovate: datasource=custom.anaconda_installer
+ARG INSTALLER_URL_LINUX64="https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh"
+ARG SHA256SUM_LINUX64="539bb43d9a52d758d0fdfa1b1b049920ec6f8c6d15ee9fe4a423355fe551a8f7"
+# renovate: datasource=custom.anaconda_installer
+ARG INSTALLER_URL_S390X="https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-s390x.sh"
+ARG SHA256SUM_S390X="1b3f4ef4147137fb1861f8251679ea96e651a7c405993c61e39441e43ee2dd11"
+# renovate: datasource=custom.anaconda_installer
+ARG INSTALLER_URL_AARCH64="https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-aarch64.sh"
+ARG SHA256SUM_AARCH64="b4be0ad2052236882402902a31d32cd37635d3db194a42f977be0d68a8ff1a31"
 
 # hadolint ignore=DL3008
 RUN set -x && \
@@ -29,19 +39,16 @@ RUN set -x && \
     && rm -rf /var/lib/apt/lists/* && \
     UNAME_M="$(uname -m)" && \
     if [ "${UNAME_M}" = "x86_64" ]; then \
-        ANACONDA_URL="https://repo.anaconda.com/archive/Anaconda3-2023.03-1-Linux-x86_64.sh"; \
-        SHA256SUM="95102d7c732411f1458a20bdf47e4c1b0b6c8a21a2edfe4052ca370aaae57bab"; \
+        INSTALLER_URL=${INSTALLER_URL_LINUX64}; \
+        SHA256SUM=${SHA256SUM_LINUX64}; \
     elif [ "${UNAME_M}" = "s390x" ]; then \
-        ANACONDA_URL="https://repo.anaconda.com/archive/Anaconda3-2023.03-1-Linux-s390x.sh"; \
-        SHA256SUM="5af1406c6350b4ba6839c49faa32a3c90f2b9845a03c35843f118dd9dd013421"; \
+        INSTALLER_URL=${INSTALLER_URL_S390X}; \
+        SHA256SUM=${SHA256SUM_S390X}; \
     elif [ "${UNAME_M}" = "aarch64" ]; then \
-        ANACONDA_URL="https://repo.anaconda.com/archive/Anaconda3-2023.03-1-Linux-aarch64.sh"; \
-        SHA256SUM="54e600faa2af63a25717af30ecaddf1ee428cdfebd3721a70f41462e232e8153"; \
-    elif [ "${UNAME_M}" = "ppc64le" ]; then \
-        ANACONDA_URL="https://repo.anaconda.com/archive/Anaconda3-2023.03-1-Linux-ppc64le.sh"; \
-        SHA256SUM="a31f2d6da83534cff7c994403cc11fa634b31fcd10eb4153d00233345ee084b2"; \
+        INSTALLER_URL=${INSTALLER_URL_AARCH64}; \
+        SHA256SUM=${SHA256SUM_AARCH64}; \
     fi && \
-    wget "${ANACONDA_URL}" -O anaconda.sh -q && \
+    wget "${INSTALLER_URL}" -O anaconda.sh -q && \
     echo "${SHA256SUM} anaconda.sh" > shasum && \
     sha256sum --check --status shasum && \
     /bin/bash anaconda.sh -b -p /opt/conda && \
@@ -52,6 +59,7 @@ RUN set -x && \
     find /opt/conda/ -follow -type f -name '*.a' -delete && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy
+
 
 RUN apt-get update && apt-get install -y \
     build-essential \
