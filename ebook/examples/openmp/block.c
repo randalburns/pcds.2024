@@ -14,8 +14,6 @@ int main ()
 {
   int i;
 
-//  omp_set_num_threads ( 32 );
-
   #pragma omp parallel 
   { 
     int tid = omp_get_thread_num();
