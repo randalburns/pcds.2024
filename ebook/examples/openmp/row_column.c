@@ -6,7 +6,7 @@
 
 
 //
-// row_column.c -- subset of running example in stencil.c
+// row_column.c -- demonstration of importance of iteration order
 //
 
 /*
@@ -15,9 +15,35 @@
  *      gcc -fopenmp -O3 stencil.c (gcc)
  */
 
+
+/* Randomly Initialize in column major order. 
+  Strided access should be less efficient. */
+void initializeyx ( double* array )
+{
+    /* Initialize the array to random values */
+    for (int y=0; y<DIM; y++) {
+        for (int x=0; x<DIM; x++) {
+            array[x*DIM+y] = (double)rand()/RAND_MAX;
+        }        
+    }
+}
+
+/* Randomly Initialize in row major order. 
+  Sequential access should be more efficient. */
+void initializexy ( double* array )
+{
+    /* Initialize the array to random values */
+    for (int x=0; x<DIM; x++) {
+        for (int y=0; y<DIM; y++) {
+            array[x*DIM+y] = (double)rand()/RAND_MAX;
+        }        
+    }
+}
+
+
 // Dimension of the array.  Data will be DIM x DIM
-const int DIM = 16384;
-//const int DIM = 8192;
+//const int DIM = 16384;
+const int DIM = 8192;
 //const int DIM = 4096;
 // Number of trials.  Set to get desired confidence intervals.
 const int TRIALS = 4;
@@ -50,30 +76,6 @@ int timeval_subtract (struct timeval * result, struct timeval * y, struct timeva
 
   /* Return 1 if result is negative. */
   return x->tv_sec < y->tv_sec;
-}
-
-/* Randomly Initialize in column major order. 
-  Strided access should be less efficient. */
-void initializeyx ( double* array )
-{
-    /* Initialize the array to random values */
-    for (int y=0; y<DIM; y++) {
-        for (int x=0; x<DIM; x++) {
-            array[x*DIM+y] = (double)rand()/RAND_MAX;
-        }        
-    }
-}
-
-/* Randomly Initialize in row major order. 
-  Sequential access should be more efficient. */
-void initializexy ( double* array )
-{
-    /* Initialize the array to random values */
-    for (int x=0; x<DIM; x++) {
-        for (int y=0; y<DIM; y++) {
-            array[x*DIM+y] = (double)rand()/RAND_MAX;
-        }        
-    }
 }
 
 

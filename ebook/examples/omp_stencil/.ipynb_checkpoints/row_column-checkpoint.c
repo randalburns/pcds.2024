@@ -6,21 +6,11 @@
 
 
 //
-// row_column.c -- subset of running example in stencil.s
+// row_column.c -- subset of running example in stencil.c
 //
 
+
 /*
- *  stencil.c
- *
- *  This program has sucessively optimized implementations of stencil computations.
- *  It has functions to 
- *     * randomly intialize 2-d array with doubles in [0,1]
- *     * Average a stencil of 2*HWIDTH+1 for each cell
- *     * Sum two averaged stencils
- *
- *  This computing pattern is common in numerical simulations and similar
- *  to the computation of convulation functions in ML.
- *
  *  Compile with:
  *      gcc -Xpreprocessor -fopenmp -O3 -lomp stencil.c (clang MacOSX)
  *      gcc -fopenmp -O3 stencil.c (gcc)
