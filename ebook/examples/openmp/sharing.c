@@ -50,6 +50,7 @@ void no_sharing ( double* array, double* outar )
     }        
 }
 
+
 // Dimension of the array.  Data will be DIM x DIM
 const int DIM = 8192*8192;
 const int TRIALS = 4;
