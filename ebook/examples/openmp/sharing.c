@@ -15,6 +15,11 @@
  *      gcc -fopenmp -O3 sharing.c (gcc)
  */
 
+// Dimension of the array.  Data will be DIM x DIM
+const int DIM = 4096*4096;
+const int TRIALS = 4;
+
+
 // Each thread writes to adjacent variables in same cache line
 void sharing ( double* array, double* outar )
 {
@@ -50,10 +55,6 @@ void no_sharing ( double* array, double* outar )
     }        
 }
 
-
-// Dimension of the array.  Data will be DIM x DIM
-const int DIM = 8192*8192;
-const int TRIALS = 4;
 
 /* Helper function to deal with gettimeofday()
 
