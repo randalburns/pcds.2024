@@ -20,7 +20,8 @@ const int DIM = 4096*4096;
 const int TRIALS = 4;
 
 
-// Each thread writes to adjacent variables in same cache line
+// Each thread writes to the same variables 
+//   Note -- this is not thread safe
 void sharing ( double* array, double* outar )
 {
     #pragma omp parallel 
@@ -32,6 +33,7 @@ void sharing ( double* array, double* outar )
 }
 
 // Each thread writes to adjacent variables in same cache line
+//   this creates false sharing
 void false_sharing ( double* array, double* outar )
 {
     #pragma omp parallel 
@@ -44,6 +46,7 @@ void false_sharing ( double* array, double* outar )
 }
 
 // Each thread writes to variables in different memory regions
+//   no false sharing
 void no_sharing ( double* array, double* outar )
 {
     #pragma omp parallel 

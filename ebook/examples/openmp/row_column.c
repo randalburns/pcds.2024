@@ -6,7 +6,7 @@
 
 
 //
-// row_column.c -- demonstration of importance of iteration order
+// row_column.c -- demonstration of importance of iteration order on memory performance.
 //
 
 /*
@@ -14,6 +14,16 @@
  *      gcc -Xpreprocessor -fopenmp -O3 -lomp stencil.c (clang MacOSX)
  *      gcc -fopenmp -O3 stencil.c (gcc)
  */
+
+
+// Dimension of the array.  Data will be DIM x DIM
+//const int DIM = 16384;
+const int DIM = 8192;
+//const int DIM = 4096;
+// Number of trials.  Set to get desired confidence intervals.
+const int TRIALS = 4;
+// HWIDTH = 2 matches the unrolled code.  If you change, comparisons will break.
+const int HWIDTH = 2;
 
 
 /* Randomly Initialize in column major order. 
@@ -40,15 +50,6 @@ void initializexy ( double* array )
     }
 }
 
-
-// Dimension of the array.  Data will be DIM x DIM
-//const int DIM = 16384;
-const int DIM = 8192;
-//const int DIM = 4096;
-// Number of trials.  Set to get desired confidence intervals.
-const int TRIALS = 4;
-// HWIDTH = 2 matches the unrolled code.  If you change, comparisons will break.
-const int HWIDTH = 2;
 
 /* Helper function to deal with gettimeofday()
 
