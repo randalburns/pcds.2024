@@ -1,0 +1,23 @@
+{
+  "name": "Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  // "runArgs": ["--init"],
+  "customizations": {
+    "vscode": {
+      // "settings": {
+      //   "terminal.integrated.shell.linux": "/bin/bash"
+      // },
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-vscode-remote.remote-containers"
+      ]
+    }
+  }
+  // "postCreateCommand": "conda init bash && conda activate base",
+  // "remoteUser": "jupyteruser",
+  // "workspaceFolder": "/home/jupyteruser",
+  // "features": {}
+}
