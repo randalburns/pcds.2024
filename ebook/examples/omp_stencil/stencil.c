@@ -345,7 +345,9 @@ void max_el_critical ( double* input_ar )
     for (int x=0; x<DIM; x++) {
         for (int y=0; y<DIM; y++) {
             #pragma omp critical
-            max_el = max_el > input_ar[x*DIM+y] ? max_el : input_ar[x*DIM+y]; 
+            {
+                max_el = max_el > input_ar[x*DIM+y] ? max_el : input_ar[x*DIM+y]; 
+            }
         }        
     }
 }
