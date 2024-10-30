@@ -88,8 +88,8 @@ RUN conda install -c conda-forge openjdk && \
 #ENV JAVA_HOME=/opt/conda
 #ENV HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 
-#RUN apt-get -y install graphviz
-#RUN conda install python-graphviz
+RUN apt-get -y install graphviz
+RUN conda install python-graphviz
 
 #RUN pip install -U ipywidgets
 
