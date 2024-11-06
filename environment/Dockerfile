@@ -75,21 +75,20 @@ RUN conda install -c conda-forge openjdk && \
     rm install.py ijava-1.3.0.zip 
 
 # Would prefer to install with conda, but doesn't work now
-#RUN pip install pyspark ray
+RUN pip install pyspark ray
 
 #RUN conda install torchvision   
 #RUN conda install pandoc   
 
 #RUN conda install jax -c conda-forge
 
-#RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.2.4/hadoop-3.2.4.tar.gz && \
-#        tar -xvzf hadoop-3.2.4.tar.gz && rm -f hadoop-3.2.4.tar.gz
+RUN wget https://dlcdn.apache.org/hadoop/common/hadoop-3.2.4/hadoop-3.2.4.tar.gz && \
+        tar -xvzf hadoop-3.2.4.tar.gz && rm -f hadoop-3.2.4.tar.gz
 
-#ENV JAVA_HOME=/opt/conda
-#ENV HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
+ENV JAVA_HOME=/opt/conda
 
-RUN apt-get -y install graphviz
-RUN conda install python-graphviz
+#RUN apt-get -y install graphviz
+#RUN conda install python-graphviz
 
 #RUN pip install -U ipywidgets
 
